@@ -8,7 +8,6 @@ import com.internousdev.UserRegistration.util.DBConnector;
 import com.internousdev.UserRegistration.util.DateUtil;
 
 
-
 public class UserCreateComplateDAO {
 	private DBConnector dbConnector = new DBConnector();
 
@@ -18,7 +17,7 @@ public class UserCreateComplateDAO {
 
 	private String sql ="INSERT INTO login_user_transaction(login_id,login_pass,user_name,insert_date) VALUES(?, ?, ?, ?)";
 
-	public void cerateUser(String loginUserId, String loginUserPassword, String userName) throws SQLException{
+	public void cerateUser(String loginUserId, String loginUserPassword, String userName) throws SQLException{//例外をSQLExeptionに返す
 		try{
 			  PreparedStatement preparedStatement = connection.prepareStatement(sql);
 			  preparedStatement.setString(1, loginUserId);
@@ -27,7 +26,9 @@ public class UserCreateComplateDAO {
 			  preparedStatement.setString(4, dateUtil.getDate());
 
 			  preparedStatement.execute();
-			}catch(Exception e) {
+		
+		
+		}catch(Exception e) {
 				e.printStackTrace();
 			}finally{
 				 connection.close();
